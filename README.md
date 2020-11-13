@@ -2,8 +2,12 @@
 
 # 変更手順
 ```
-$ grep -r "django_template" ./
-APP名を全部変更する
+from django.core.management.utils import get_random_secret_key  
+get_random_secret_key()
+```
 
+```
+python manage.py makemigrations
+python manage.py migrate
 
 ```
