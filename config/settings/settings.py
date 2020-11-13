@@ -70,7 +70,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default' : {
-       'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': env.str('DB_NAME'),
         'USER': env.str('DB_USER'),
         'PASSWORD': env.str('DB_PASS'),
@@ -142,9 +142,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # common static dirs
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 
 # dev
 from .settings_dev import *
