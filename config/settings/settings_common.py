@@ -12,5 +12,5 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 USE_X_FORWARDED_HOST = True
 
-SITE_NAME = "テンプレート"
+SITE_NAME = "宴会くん"
 

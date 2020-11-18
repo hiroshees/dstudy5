@@ -36,6 +36,8 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 INSTALLED_APPS = [
     # original app
     'user.apps.UserConfig',
+    'enkai.apps.EnkaiConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

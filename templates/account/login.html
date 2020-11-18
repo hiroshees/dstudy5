@@ -15,6 +15,9 @@
             {% bootstrap_form_errors form layout='inline' %}
             {% bootstrap_form form layout='inline' %}
             {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
             <button type="submit" class="btn btn-primary btn-lg btn-block" >ログイン</button>
             <div class="m-3 text-center">OR</div>
             <div class="text-center">

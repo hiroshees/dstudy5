@@ -15,10 +15,21 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ユーザ
+            イベント
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="{% url 'user:user_detail' user.pk %}">ユーザ情報</a>
+            <a class="dropdown-item" href="{% url 'enkai:event_list' %}">一覧</a>
+            <a class="dropdown-item" href="{% url 'enkai:event_create' %}">新規作成</a>
+            <a class="dropdown-item" href="{% url 'enkai:event_mylist' %}">マイイベント一覧</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            カテゴリ
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'enkai:category_list' %}">一覧</a>
+            <a class="dropdown-item" href="{% url 'enkai:category_create' %}">新規作成</a>
           </div>
         </li>
       </ul>

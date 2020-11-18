@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}チャット{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">チャット</h1>
+    <div class="mb-3">
+        <a href="{% url 'enkai:event_detail' event_id %}" class="btn btn-primary">イベント表示</a>
+    </div>
+    <div class="mb-3 px-3">
+        {% for chat in chats %}
+            {% if chat.user.id == user.id %}
+            <div class="row justify-content-end mb-2">
+                <div class="col-4 bg-primary text-white p-3">
+                    {{chat.body}}<br>
+                    {{chat.user.email}}<br>
+                    {{chat.created}}<br>
+                </div>
+            </div>
+            {% else %}
+            <div class="row justify-content-start mb-2">
+                <div class="col-4 bg-secondary text-white p-3">
+                    {{chat.body}}<br>
+                    {{chat.user.email}}<br>
+                    {{chat.created}}<br>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <hr>
+    <form action="{% url 'enkai:chat' event_id %}" method="post" novalidate>
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success" >投稿</button>
+        <hr>
+    </form>
+</div>
+{% endblock %}

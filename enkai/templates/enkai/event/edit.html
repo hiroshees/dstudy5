@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}イベント編集{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">イベント編集</h1>
+    <div class="mb-3">
+        <a href="{% url 'enkai:event_list'%}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+    <form action="{% url 'enkai:event_edit' object.pk  %}" method="post" novalidate>
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success" >登録</button>
+        <hr>
+    </form>
+</div>
+{% endblock %}
