@@ -1,4 +1,4 @@
-# django_template
+# 宴会君（Django版）
 
 # 変更手順
 ```
