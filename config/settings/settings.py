@@ -146,6 +146,8 @@ STATIC_URL = '/static/'
 # common static dirs
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+# collect static dirs
+STATIC_ROOT = env.str('STATIC_ROOT')
 
 # dev
 from .settings_dev import *
