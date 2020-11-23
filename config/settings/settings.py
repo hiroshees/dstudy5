@@ -158,5 +158,9 @@ from .settings_allauth import *
 # common
 from .settings_common import *
 
+# log
+from .settings_log import *
+
 # asw setting
 from .settings_aws import *
+

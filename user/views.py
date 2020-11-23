@@ -30,10 +30,14 @@ from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
 from django.core.mail import BadHeaderError, send_mail
 
+import logging
+
 from .forms import UserUpdateForm
 
 
 def index(request):
+    logger = logging.getLogger("app")
+    logger.info("this is index")
     return render(request, "user/index.html")
 
 
