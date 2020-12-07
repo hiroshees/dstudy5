@@ -10,11 +10,18 @@ if not DEBUG:
             'django' : {
                 'handlers' : ['file'],
                 'level' : 'INFO',
+                'propagate' : False,
             },
             'app' : {
                 'handlers' : ['file'],
                 'level' : 'INFO',
-            }
+                'propagate' : False,
+            },
+            'console' : {
+                'handlers' : ['console'],
+                'level' : 'INFO',
+                'propagate' : False,
+            },
         },
         'handlers' : {
             'console' : {
