@@ -166,3 +166,8 @@ else :
 
 # asw setting
 from .settings_aws import *
+
+# sendgrid
+SENDGRID = env.bool('SENDGRID')
+if SENDGRID:
+    from .settings_sendgrid import *
