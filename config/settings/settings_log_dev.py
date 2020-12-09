@@ -7,26 +7,19 @@ LOGGING = {
     
     'loggers' : {
         'django' : {
-            'handlers' : ['file'],
-            'level' : 'INFO',
-            'propagate' : False,
-        },
-        'app' : {
-            'handlers' : ['file'],
-            'level' : 'INFO',
-            'propagate' : False,
-        },
-        'console' : {
             'handlers' : ['console'],
             'level' : 'INFO',
-            'propagate' : False,
         },
+        'app' : {
+            'handlers' : ['console'],
+            'level' : 'INFO',
+        }
     },
     'handlers' : {
         'console' : {
             'level' : 'INFO',
             'class' : 'logging.StreamHandler',
-            'formatter' : 'prod',
+            'formatter' : 'dev',
         },
         'file' : {
             'level' : 'INFO',
@@ -35,16 +28,16 @@ LOGGING = {
             'when' : 'D',
             'interval' : 1,
             'backupCount' : 7,
-            'formatter' : 'prod',
+            'formatter' : 'dev',
         },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
-            'formatter': 'prod',
+            'formatter': 'dev',
         },
     },
     'formatters' : {
-        'prod' : {
+        'dev' : {
             'format' : '\t'.join([
                 '%(asctime)s',
                 '[%(levelname)s]',

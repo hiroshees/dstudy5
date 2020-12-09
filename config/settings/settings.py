@@ -159,8 +159,10 @@ from .settings_allauth import *
 from .settings_common import *
 
 # log
-from .settings_log import *
+if DEBUG :
+    from .settings_log_dev import *
+else :
+    from .settings_log import *
 
 # asw setting
 from .settings_aws import *
-
