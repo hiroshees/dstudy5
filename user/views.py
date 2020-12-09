@@ -30,11 +30,16 @@ from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
 from django.core.mail import BadHeaderError, send_mail
 
+from django.utils.functional import cached_property
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+
 import logging
 
 from .forms import UserUpdateForm
 
 
+@cache_page(100)
 def index(request):
     logger = logging.getLogger("app")
     logger.info("this is index")

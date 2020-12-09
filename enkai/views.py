@@ -33,7 +33,12 @@ from django.core.mail import BadHeaderError, send_mail
 from .models import Category, Event, EventUser, Chat
 from .forms import ChatCreateForm
 
+from django.utils.functional import cached_property
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
+
+@method_decorator(cache_page(5), name='dispatch')
 class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     template_name = "enkai/category/list.html"
