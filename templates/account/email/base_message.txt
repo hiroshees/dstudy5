@@ -1,7 +1,13 @@
-{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Hello from {{ site_name }}!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}
+{% blocktrans with site_name=current_site.name %}こんにちは、【{{ site_name }}】です
 
+【{{ site_name }}】のご利用、誠にありがとうございます。
+{% endblocktrans %}
 {% block content %}{% endblock %}
 
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using {{ site_name }}!
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}今後とも、【{{ site_name }}】をよろしくお願いいたします。
+
 {{ site_domain }}{% endblocktrans %}
+--
+
 {% endautoescape %}
