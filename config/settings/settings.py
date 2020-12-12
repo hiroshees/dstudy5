@@ -12,25 +12,21 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
-env = environ.Env()
-env.read_env(os.path.join(BASE_DIR,'.env'))
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG')
+DEBUG = os.environ.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
 # Application definition
 INSTALLED_APPS = [
@@ -96,9 +92,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env.str('DB_NAME'),
-        'USER': env.str('DB_USER'),
-        'PASSWORD': env.str('DB_PASS'),
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
         'OPTIONS': {
             'charset': 'utf8',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -147,7 +144,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # collect static dirs
-STATIC_ROOT = env.str('STATIC_ROOT')
+#STATIC_ROOT = os.environ.get('STATIC_ROOT')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # dev
 from .settings_dev import *
@@ -165,9 +163,15 @@ else :
     from .settings_log import *
 
 # asw setting
-from .settings_aws import *
+AWS = os.environ.get('AWS') == 'True'
+if AWS :
+    from .settings_aws import *
 
 # sendgrid
-SENDGRID = env.bool('SENDGRID')
+SENDGRID = os.environ.get('SENDGRID') == 'True'
 if SENDGRID:
     from .settings_sendgrid import *
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals()) #追加
