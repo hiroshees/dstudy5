@@ -144,8 +144,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # collect static dirs
-#STATIC_ROOT = os.environ.get('STATIC_ROOT')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.environ.get('STATIC_ROOT')
 
 # dev
 from .settings_dev import *
@@ -176,3 +175,4 @@ HEROKU = os.environ.get('HEROKU') == 'True'
 if HEROKU :
     import django_heroku
     django_heroku.settings(locals()) #追加
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
