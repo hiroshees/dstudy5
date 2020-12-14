@@ -95,7 +95,7 @@ DATABASES = {
         'HOST': os.environ.get('DB_HOST'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('PASSWORD'),
+        'PASSWORD': os.environ.get('DB_PASS'),
         'OPTIONS': {
             'charset': 'utf8',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
