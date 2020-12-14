@@ -172,6 +172,7 @@ SENDGRID = os.environ.get('SENDGRID') == 'True'
 if SENDGRID:
     from .settings_sendgrid import *
 
-if not DEBUG:
+HEROKU = os.environ.get('HEROKU') == 'True'
+if HEROKU :
     import django_heroku
     django_heroku.settings(locals()) #追加
